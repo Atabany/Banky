@@ -22,6 +22,7 @@
 		2DAEC09427E0FE3500C19367 /* AccountSummaryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAEC09327E0FE3500C19367 /* AccountSummaryHeaderView.xib */; };
 		2DDAAC7B27E02033006639E6 /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDAAC7A27E02033006639E6 /* LocalState.swift */; };
 		2DE4DE0927DFDE2900A3CC1B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE4DE0827DFDE2900A3CC1B /* HomeVC.swift */; };
+		2DF1738E27E1112B0012537C /* AccountSummaryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DF1738D27E1112B0012537C /* AccountSummaryCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		2DAEC09327E0FE3500C19367 /* AccountSummaryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSummaryHeaderView.xib; sourceTree = "<group>"; };
 		2DDAAC7A27E02033006639E6 /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		2DE4DE0827DFDE2900A3CC1B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
+		2DF1738D27E1112B0012537C /* AccountSummaryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,10 +130,27 @@
 			isa = PBXGroup;
 			children = (
 				2DAEC08F27E0FBF500C19367 /* AccountSummaryViewController.swift */,
+				2DF1738C27E111190012537C /* Cells */,
+				2DF1738B27E111080012537C /* Header */,
+			);
+			path = AccountSummary;
+			sourceTree = "<group>";
+		};
+		2DF1738B27E111080012537C /* Header */ = {
+			isa = PBXGroup;
+			children = (
 				2DAEC09127E0FE1000C19367 /* AccountSummaryHeaderView.swift */,
 				2DAEC09327E0FE3500C19367 /* AccountSummaryHeaderView.xib */,
 			);
-			path = AccountSummary;
+			path = Header;
+			sourceTree = "<group>";
+		};
+		2DF1738C27E111190012537C /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				2DF1738D27E1112B0012537C /* AccountSummaryCell.swift */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DAEC09227E0FE1000C19367 /* AccountSummaryHeaderView.swift in Sources */,
+				2DF1738E27E1112B0012537C /* AccountSummaryCell.swift in Sources */,
 				2D25BB6527DE8F3E00876FA3 /* LoginView.swift in Sources */,
 				2DE4DE0927DFDE2900A3CC1B /* HomeVC.swift in Sources */,
 				2D3D11B427DE8B100024817C /* LoginViewController.swift in Sources */,

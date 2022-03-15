@@ -70,7 +70,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="O68-iB-4Kk" secondAttribute="bottom" priority="999" constant="16" id="zq7-iM-DAJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-47.10144927536232" y="184.48660714285714"/>
+            <point key="canvasLocation" x="-175" y="232"/>
         </view>
     </objects>
     <resources>
