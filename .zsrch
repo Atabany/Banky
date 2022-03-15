@@ -1,0 +1,4 @@
+
+ZSH_DISABLE_COMPFIX= true
+#My aliases
+alias gll='git log --pretty=oneline --no-merges'
