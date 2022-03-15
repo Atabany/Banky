@@ -5,15 +5,18 @@
 //  Created by Mohamed Elatabany on 14/03/2022.
 //
 
-import Foundation
+import UIKit
 
-
-enum Constants {
+enum K {
     
     enum Images {
         static let delorean = "delorean"
         static let thumbs   = "thumbs"
         static let world    = "world"
+    }
+    
+    enum colors {
+        static let appColor: UIColor = .systemTeal
     }
     
 }

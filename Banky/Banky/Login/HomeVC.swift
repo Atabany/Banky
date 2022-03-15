@@ -13,14 +13,14 @@ class HomeVC: UIViewController {
     let stackView = UIStackView()
     let label = UILabel()
     let logoutButton = UIButton(type: .system)
-    
-    
+        
     weak var delegate: LogoutDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
         layout()
+        setStatusBar()
     }
     
 }
@@ -62,7 +62,6 @@ extension HomeVC {
 //MARK: - Actions
 
 extension HomeVC {
-    
     @objc
     private func logoutButtonTapped(sender: UIButton) {
         delegate?.didLogout()

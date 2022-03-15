@@ -16,6 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let loginViewController = LoginViewController()
     let onboardingViewController = OnboardingContainerViewController()
     let homeVC = HomeVC()
+    let mainViewController = MainViewController()
     var hasOnboarded = false
     
     
@@ -29,9 +30,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         loginViewController.delegate = self
         homeVC.delegate = self
 
-        window?.rootViewController = homeVC
-        
-        return true
+        window?.rootViewController = mainViewController
+         return true
     }
     
 }

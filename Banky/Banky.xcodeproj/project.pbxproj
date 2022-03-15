@@ -14,7 +14,9 @@
 		2D3D11BC27DE8B100024817C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D3D11BA27DE8B100024817C /* LaunchScreen.storyboard */; };
 		2D43F94927DF9E05003D4C0C /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43F94827DF9E05003D4C0C /* OnboardingContainerViewController.swift */; };
 		2D43F94F27DFB71B003D4C0C /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43F94E27DFB71B003D4C0C /* OnboardingViewController.swift */; };
-		2D43F95227DFBFCC003D4C0C /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43F95127DFBFCC003D4C0C /* Constants.swift */; };
+		2D43F95227DFBFCC003D4C0C /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43F95127DFBFCC003D4C0C /* K.swift */; };
+		2D61FA5F27E0E484006355D6 /* UIViewController + Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D61FA5E27E0E484006355D6 /* UIViewController + Utils.swift */; };
+		2D61FA6127E0E759006355D6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D61FA6027E0E759006355D6 /* MainViewController.swift */; };
 		2DDAAC7B27E02033006639E6 /* LocalState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DDAAC7A27E02033006639E6 /* LocalState.swift */; };
 		2DE4DE0927DFDE2900A3CC1B /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE4DE0827DFDE2900A3CC1B /* HomeVC.swift */; };
 /* End PBXBuildFile section */
@@ -29,7 +31,9 @@
 		2D3D11BD27DE8B100024817C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D43F94827DF9E05003D4C0C /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		2D43F94E27DFB71B003D4C0C /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
-		2D43F95127DFBFCC003D4C0C /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		2D43F95127DFBFCC003D4C0C /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		2D61FA5E27E0E484006355D6 /* UIViewController + Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Utils.swift"; sourceTree = "<group>"; };
+		2D61FA6027E0E759006355D6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		2DDAAC7A27E02033006639E6 /* LocalState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalState.swift; sourceTree = "<group>"; };
 		2DE4DE0827DFDE2900A3CC1B /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -84,11 +88,12 @@
 		2D3D11AE27DE8B100024817C /* Banky */ = {
 			isa = PBXGroup;
 			children = (
-				2D25BB6027DE8EC200876FA3 /* Files */,
-				2D43F95027DFBDD3003D4C0C /* Utlis */,
-				2D43F94727DF9ACE003D4C0C /* Onboarding */,
-				2D25BB6327DE8F0500876FA3 /* Login */,
 				2D3D11AF27DE8B100024817C /* AppDelegate.swift */,
+				2D25BB6327DE8F0500876FA3 /* Login */,
+				2D43F94727DF9ACE003D4C0C /* Onboarding */,
+				2D43F95027DFBDD3003D4C0C /* Utlis */,
+				2D25BB6027DE8EC200876FA3 /* Files */,
+				2D61FA6027E0E759006355D6 /* MainViewController.swift */,
 			);
 			path = Banky;
 			sourceTree = "<group>";
@@ -105,8 +110,9 @@
 		2D43F95027DFBDD3003D4C0C /* Utlis */ = {
 			isa = PBXGroup;
 			children = (
-				2D43F95127DFBFCC003D4C0C /* Constants.swift */,
+				2D43F95127DFBFCC003D4C0C /* K.swift */,
 				2DDAAC7A27E02033006639E6 /* LocalState.swift */,
+				2D61FA5E27E0E484006355D6 /* UIViewController + Utils.swift */,
 			);
 			path = Utlis;
 			sourceTree = "<group>";
@@ -184,11 +190,13 @@
 				2D25BB6527DE8F3E00876FA3 /* LoginView.swift in Sources */,
 				2DE4DE0927DFDE2900A3CC1B /* HomeVC.swift in Sources */,
 				2D3D11B427DE8B100024817C /* LoginViewController.swift in Sources */,
+				2D61FA5F27E0E484006355D6 /* UIViewController + Utils.swift in Sources */,
 				2D43F94F27DFB71B003D4C0C /* OnboardingViewController.swift in Sources */,
 				2D3D11B027DE8B100024817C /* AppDelegate.swift in Sources */,
 				2D43F94927DF9E05003D4C0C /* OnboardingContainerViewController.swift in Sources */,
-				2D43F95227DFBFCC003D4C0C /* Constants.swift in Sources */,
+				2D43F95227DFBFCC003D4C0C /* K.swift in Sources */,
 				2DDAAC7B27E02033006639E6 /* LocalState.swift in Sources */,
+				2D61FA6127E0E759006355D6 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
