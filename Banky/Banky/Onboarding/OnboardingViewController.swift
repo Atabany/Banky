@@ -8,6 +8,9 @@
 
 
 import UIKit
+
+
+
 class OnboardingViewController: UIViewController {
     
     let stackView = UIStackView()
@@ -19,7 +22,6 @@ class OnboardingViewController: UIViewController {
     
     
     private var heroImageName: String
-    
     
     
     
@@ -39,10 +41,17 @@ class OnboardingViewController: UIViewController {
         super.viewDidLoad()
         style()
         layout()
+        
+        
     }
     
-    
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        imageView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        UIView.animate(withDuration: 0.5) {
+            self.imageView.transform = CGAffineTransform.identity
+        }
+    }
     
 }
 
@@ -82,7 +91,7 @@ extension OnboardingViewController {
             stackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             stackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
-            view.trailingAnchor.constraint(equalToSystemSpacingAfter: view.trailingAnchor, multiplier: 1)
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: stackView.trailingAnchor, multiplier: 1)
         ])
     }
 }

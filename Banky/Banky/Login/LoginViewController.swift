@@ -6,12 +6,23 @@
 //
 
 import UIKit
+import Combine
+
+protocol LoginViewControllerDelegate: AnyObject{
+    func didLogin()
+}
+
+protocol LogoutDelegate: AnyObject{
+    func didLogout()
+}
 
 class LoginViewController: UIViewController {
-
+    
     let loginView = LoginView()
     let signInButton = UIButton(type: .system)
     let errorMessageLabel = UILabel()
+    
+    weak var delegate: LoginViewControllerDelegate?
     
     
     var username: String? {
@@ -21,30 +32,47 @@ class LoginViewController: UIViewController {
     var password: String? {
         return loginView.passwordTextfield.text
     }
-
     
-    var errorMessage: String = "" {
+    
+    var errorMessage: String? = "" {
         didSet {
             configureView(withMessage: errorMessage)
         }
     }
     
     
+    var subscriber: AnyCancellable!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
         layout()
+        observe()
     }
     
     
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        resetUI()
+    }
+    
+    func observe() {
+        subscriber =  NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification)
+            .sink { [weak self] notification in
+                guard let self = self else {return}
+                guard let _ = notification.object as? UITextField else {
+                    return
+                }
+                self.errorMessage = nil
+            }
+    }
     
     
-
 }
 
 
 extension LoginViewController {
-
+    
     private func style() {
         signInButton.translatesAutoresizingMaskIntoConstraints = false
         signInButton.configuration = .filled()
@@ -88,11 +116,18 @@ extension LoginViewController {
         
         // Message Error label
         NSLayoutConstraint.activate([
-             errorMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: signInButton.bottomAnchor, multiplier: 2),
-             errorMessageLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
-             errorMessageLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
+            errorMessageLabel.topAnchor.constraint(equalToSystemSpacingBelow: signInButton.bottomAnchor, multiplier: 2),
+            errorMessageLabel.leadingAnchor.constraint(equalTo: loginView.leadingAnchor),
+            errorMessageLabel.trailingAnchor.constraint(equalTo: loginView.trailingAnchor),
         ])
         
+    }
+    
+    private func resetUI() {
+        signInButton.configuration?.showsActivityIndicator = false
+        loginView.usernameTextfield.text = ""
+        loginView.passwordTextfield.text = ""
+        errorMessage = ""
     }
 }
 
@@ -102,7 +137,7 @@ extension LoginViewController {
     
     @objc
     func signInTapped(sender: UIButton) {
-        errorMessageLabel.isHidden = true
+        configureView(withMessage: nil)
         login()
     }
     
@@ -117,17 +152,21 @@ extension LoginViewController {
             return
         }
         
-        
         if username == "Atabany" && password == "123456" {
             signInButton.configuration?.showsActivityIndicator = true
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
+                guard let self = self else {return}
+                self.delegate?.didLogin()
+            }
+            
         } else {
             configureView(withMessage: "Icorrect username / password")
         }
     }
     
     
-    private func configureView(withMessage message: String) {
+    private func configureView(withMessage message: String?) {
         errorMessageLabel.text = message
-        errorMessageLabel.isHidden = message.isEmpty
+        errorMessageLabel.isHidden =  message == nil
     }
 }
