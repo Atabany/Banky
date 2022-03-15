@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let loginViewController = LoginViewController()
     let onboardingViewController = OnboardingContainerViewController()
     let homeVC = HomeVC()
-    let mainViewController = MainViewController()
+    let mainViewController = AccountSummaryViewController()
     var hasOnboarded = false
     
     
