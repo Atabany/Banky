@@ -43,18 +43,20 @@ extension AppTitleView {
 
         
         
-        appTitleLabel.font = UIFont.preferredFont(forTextStyle: .title1)
+        appTitleLabel.font = UIFont.preferredFont(forTextStyle: .largeTitle)
         appTitleLabel.textColor = .label
         appTitleLabel.text  = "BANKY"
         appTitleLabel.translatesAutoresizingMaskIntoConstraints       = false
         appTitleLabel.textAlignment = .center
+        appTitleLabel.adjustsFontForContentSizeCategory = true
         
-        appSubtitleLabel.font = UIFont.preferredFont(forTextStyle: .title3)
+        appSubtitleLabel.font = UIFont.preferredFont(forTextStyle: .subheadline)
         appSubtitleLabel.textColor = .secondaryLabel
         appSubtitleLabel.text = "Best solution to track your accounts"
         appSubtitleLabel.translatesAutoresizingMaskIntoConstraints       = false
         appSubtitleLabel.textAlignment = .center
-
+        appSubtitleLabel.adjustsFontForContentSizeCategory = true
+        appSubtitleLabel.numberOfLines = 0
     }
     
     
