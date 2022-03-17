@@ -25,20 +25,19 @@ struct CurrencyFormatter {
     }
     
     // Converts 929466 > 929,466
-    private func convertDollar(_ dollarPart: Double) -> String {
+    func convertDollar(_ dollarPart: Double) -> String {
         let dollarsWithDecimal = dollarsFormatted(dollarPart) // "$929,466.00"
         let formatter = NumberFormatter()
-        formatter.locale = Locale(identifier: "en")
+        formatter.locale = Locale(identifier: "en_US")
         let decimalSeparator = formatter.decimalSeparator! // "."
         let dollarComponents = dollarsWithDecimal.components(separatedBy: decimalSeparator) // "$929,466" "00"
         var dollars = dollarComponents.first! // "$929,466"
         dollars.removeFirst() // "929,466"
-        print(dollars)
         return dollars
     }
     
     // Convert 0.23 > 23
-    private func convertCents(_ centPart: Double) -> String {
+    func convertCents(_ centPart: Double) -> String {
         let cents: String
         if centPart == 0 {
             cents = "00"
@@ -53,7 +52,7 @@ struct CurrencyFormatter {
         let formatter = NumberFormatter()
         formatter.numberStyle = .currency
         formatter.usesGroupingSeparator = true
-        formatter.locale = Locale(identifier: "en")
+        formatter.locale = Locale(identifier: "en_US")
         if let result = formatter.string(from: dollars as NSNumber) {
             return result
         }
@@ -61,7 +60,7 @@ struct CurrencyFormatter {
         return ""
     }
     
-    private func makeBalanceAttributed(dollars: String, cents: String) -> NSMutableAttributedString {
+    func makeBalanceAttributed(dollars: String, cents: String) -> NSMutableAttributedString {
         let dollarSignAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .callout), .baselineOffset: 8]
         let dollarAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .title1)]
         let centAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .callout), .baselineOffset: 8]
