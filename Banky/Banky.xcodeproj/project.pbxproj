@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D072B0B27E373E800121941 /* CurrencyFormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D072B0A27E373E800121941 /* CurrencyFormatterTests.swift */; };
 		2D25BB6527DE8F3E00876FA3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D25BB6427DE8F3E00876FA3 /* LoginView.swift */; };
 		2D3D11B027DE8B100024817C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3D11AF27DE8B100024817C /* AppDelegate.swift */; };
 		2D3D11B427DE8B100024817C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3D11B327DE8B100024817C /* LoginViewController.swift */; };
@@ -20,7 +21,6 @@
 		2D926EAB27E254A0006090EC /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D926EAA27E254A0006090EC /* String+Ext.swift */; };
 		2D926EAD27E29DD4006090EC /* Decimal+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D926EAC27E29DD4006090EC /* Decimal+Ext.swift */; };
 		2D926EAF27E2A1FD006090EC /* CurrencyFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D926EAE27E2A1FD006090EC /* CurrencyFormatter.swift */; };
-		2D95B57C27E2BDDF0087D520 /* BankyUnitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D95B57B27E2BDDF0087D520 /* BankyUnitTest.swift */; };
 		2DAEC09027E0FBF500C19367 /* AccountSummaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAEC08F27E0FBF500C19367 /* AccountSummaryViewController.swift */; };
 		2DAEC09227E0FE1000C19367 /* AccountSummaryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DAEC09127E0FE1000C19367 /* AccountSummaryHeaderView.swift */; };
 		2DAEC09427E0FE3500C19367 /* AccountSummaryHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2DAEC09327E0FE3500C19367 /* AccountSummaryHeaderView.xib */; };
@@ -40,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D072B0A27E373E800121941 /* CurrencyFormatterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatterTests.swift; sourceTree = "<group>"; };
 		2D25BB6427DE8F3E00876FA3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 		2D3D11AC27DE8B100024817C /* Banky.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Banky.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D3D11AF27DE8B100024817C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -56,7 +57,6 @@
 		2D926EAC27E29DD4006090EC /* Decimal+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Decimal+Ext.swift"; sourceTree = "<group>"; };
 		2D926EAE27E2A1FD006090EC /* CurrencyFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyFormatter.swift; sourceTree = "<group>"; };
 		2D926EB427E2B75C006090EC /* BankyUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BankyUnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D95B57B27E2BDDF0087D520 /* BankyUnitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BankyUnitTest.swift; sourceTree = "<group>"; };
 		2DAEC08F27E0FBF500C19367 /* AccountSummaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewController.swift; sourceTree = "<group>"; };
 		2DAEC09127E0FE1000C19367 /* AccountSummaryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryHeaderView.swift; sourceTree = "<group>"; };
 		2DAEC09327E0FE3500C19367 /* AccountSummaryHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountSummaryHeaderView.xib; sourceTree = "<group>"; };
@@ -168,7 +168,7 @@
 		2D926EB527E2B75C006090EC /* BankyUnitTests */ = {
 			isa = PBXGroup;
 			children = (
-				2D95B57B27E2BDDF0087D520 /* BankyUnitTest.swift */,
+				2D072B0A27E373E800121941 /* CurrencyFormatterTests.swift */,
 			);
 			path = BankyUnitTests;
 			sourceTree = "<group>";
@@ -325,7 +325,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D95B57C27E2BDDF0087D520 /* BankyUnitTest.swift in Sources */,
+				2D072B0B27E373E800121941 /* CurrencyFormatterTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
