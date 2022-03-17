@@ -49,4 +49,5 @@ class Test: XCTestCase {
         let result = formatter.dollarsFormatted(929466.23)
         XCTAssertEqual(result, "\(currencySymbol)929,466.23")
     }
+    
 }
