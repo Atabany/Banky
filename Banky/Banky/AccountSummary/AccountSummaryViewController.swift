@@ -11,14 +11,29 @@ import UIKit
 
 class AccountSummaryViewController: UIViewController {
     
+    lazy var logoutBarButtonItem: UIBarButtonItem = {
+        let barButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
+        barButtonItem.tintColor = .label
+        return barButtonItem
+    }()
+    
     var accounts = [AccountSummaryCell.ViewModel]()
     var tableView = UITableView()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        setupNavigationBar()
     }
 }
+
+extension AccountSummaryViewController {
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = logoutBarButtonItem
+    }
+}
+
 
 extension AccountSummaryViewController {
     private func setup() {
@@ -30,28 +45,24 @@ extension AccountSummaryViewController {
     private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
-//        tableView.backgroundColor = K.colors.appColor
-
+        tableView.backgroundColor = K.colors.appColor
+        
         
         tableView.register(AccountSummaryCell.self, forCellReuseIdentifier: AccountSummaryCell.reuseId)
         tableView.rowHeight = AccountSummaryCell.rowHeight
         tableView.tableFooterView = UIView()
-
+        
         
         tableView.translatesAutoresizingMaskIntoConstraints = false
         
         view.addSubview(tableView)
-
+        
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
             tableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
-        
-
-        
-        
     }
     
     
@@ -60,10 +71,11 @@ extension AccountSummaryViewController {
         var size = header.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)
         size.width = UIScreen.main.bounds.width
         header.frame.size = size
-        
         tableView.tableHeaderView = header
     }
 }
+
+
 
 
 extension AccountSummaryViewController {
@@ -114,7 +126,13 @@ extension AccountSummaryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
     }
-    
-    
-
 }
+
+
+// MARK: Actions
+extension AccountSummaryViewController {
+    @objc func logoutTapped(sender: UIButton) {
+        NotificationCenter.default.post(name: .logout, object: nil)
+    }
+}
+

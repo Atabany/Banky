@@ -10,7 +10,6 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
     var window: UIWindow?
     
     let loginViewController = LoginViewController()
@@ -27,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         onboardingViewController.delegate = self
         loginViewController.delegate = self
         displayLogin()
-
+        registerForNotifications()
         return true
     }
     
@@ -51,6 +50,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().backgroundColor = K.colors.appColor
     }
     
+    private func registerForNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(didLogout), name: .logout, object: nil)
+    }
 
 }
 
@@ -61,6 +63,13 @@ extension AppDelegate: LoginViewControllerDelegate {
     }
 }
 
+// logut action
+extension AppDelegate {
+    @objc
+    func didLogout() {
+        setRootViewController(loginViewController)
+    }
+}
 
 extension AppDelegate: OnboardingContainerViewControllerDelgate {
     func didFinishOnboarding() {
@@ -71,11 +80,6 @@ extension AppDelegate: OnboardingContainerViewControllerDelgate {
 }
 
 
-extension AppDelegate: LogoutDelegate {
-    func didLogout() {
-        setRootViewController(loginViewController)
-    }
-}
 
 
 extension AppDelegate {
