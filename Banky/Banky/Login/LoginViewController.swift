@@ -19,6 +19,7 @@ protocol LogoutDelegate: AnyObject{
 class LoginViewController: UIViewController {
     
     let loginView = LoginView()
+    let appTitleview = AppTitleView()
     let signInButton = UIButton(type: .system)
     let errorMessageLabel = UILabel()
     
@@ -90,11 +91,21 @@ extension LoginViewController {
     
     
     private func layout() {
-        
+        view.addSubview(appTitleview)
         view.addSubview(loginView)
         view.addSubview(signInButton)
         view.addSubview(errorMessageLabel)
         
+        
+        // App Titles
+        NSLayoutConstraint.activate([
+            
+            appTitleview.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
+            view.trailingAnchor.constraint(equalToSystemSpacingAfter: appTitleview.trailingAnchor, multiplier: 1),
+            loginView.topAnchor.constraint(equalToSystemSpacingBelow: appTitleview.bottomAnchor, multiplier: 3)
+            
+        ])
+
         
         // LoginView
         NSLayoutConstraint.activate([

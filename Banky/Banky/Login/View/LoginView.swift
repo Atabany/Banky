@@ -1,3 +1,4 @@
+
 //
 //  LoginView.swift
 //  Banky
@@ -8,6 +9,7 @@
 
 import UIKit
 class LoginView: UIView {
+    
     
     let stackView           = UIStackView()
     let usernameTextfield   = UITextField()
@@ -32,8 +34,10 @@ class LoginView: UIView {
 extension LoginView {
     
     func style() {
+        
         translatesAutoresizingMaskIntoConstraints                   = false
         backgroundColor                                             = .secondarySystemFill
+        
         stackView.translatesAutoresizingMaskIntoConstraints         = false
         stackView.axis                                              = .vertical
         stackView.spacing                                           = 8
@@ -60,13 +64,21 @@ extension LoginView {
     }
     
     
-    func layout() {				
+    func layout() {
+        
+        
+        
+
+        
         stackView.addArrangedSubview(usernameTextfield)
         stackView.addArrangedSubview(dividerView)
         stackView.addArrangedSubview(passwordTextfield)
         
 
         addSubview(stackView)
+        
+        
+
 
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalToSystemSpacingBelow: topAnchor, multiplier: 1),
@@ -76,6 +88,10 @@ extension LoginView {
             
         ])
         dividerView.heightAnchor.constraint(equalToConstant: 1).isActive = true
+        
+        
+        
+        
 
     }
     
