@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         onboardingViewController.delegate = self
         loginViewController.delegate = self
+        
         displayLogin()
         registerForNotifications()
         return true

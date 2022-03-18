@@ -17,10 +17,12 @@ class LoginViewController: UIViewController {
     
     let loginView = LoginView()
     let appTitleview = AppTitleView()
-    let signInButton = UIButton(type: .system)
+    let signInButton = LoginButton(title: "Sign In")
     let errorMessageLabel = UILabel()
     
     weak var delegate: LoginViewControllerDelegate?
+    
+    var subscriber: AnyCancellable!
     
     
     var username: String? {
@@ -39,13 +41,20 @@ class LoginViewController: UIViewController {
     }
     
     
-    var subscriber: AnyCancellable!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
         layout()
         observe()
+        setup()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        appTitleview.animate(view: self.view)
+        loginView.animate(view: self.view)
+        signInButton.animate(view: self.view)
     }
     
     
@@ -54,16 +63,7 @@ class LoginViewController: UIViewController {
         resetUI()
     }
     
-    func observe() {
-        subscriber =  NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification)
-            .sink { [weak self] notification in
-                guard let self = self else {return}
-                guard let _ = notification.object as? UITextField else {
-                    return
-                }
-                self.errorMessage = nil
-            }
-    }
+    
     
     
 }
@@ -71,13 +71,11 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController {
     
+    private func setup() {
+        signInButton.delegate = self
+    }
+    
     private func style() {
-        signInButton.translatesAutoresizingMaskIntoConstraints = false
-        signInButton.configuration = .filled()
-        signInButton.configuration?.imagePadding = 8
-        signInButton.setTitle("Sign in", for: [])
-        signInButton.addTarget(self, action: #selector(signInTapped), for: .primaryActionTriggered)
-        
         errorMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         errorMessageLabel.textAlignment                             = .center
         errorMessageLabel.textColor                                 = .systemRed
@@ -102,14 +100,13 @@ extension LoginViewController {
             loginView.topAnchor.constraint(equalToSystemSpacingBelow: appTitleview.bottomAnchor, multiplier: 3)
             
         ])
-
+        
         
         // LoginView
         NSLayoutConstraint.activate([
             loginView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
             loginView.leadingAnchor.constraint(equalToSystemSpacingAfter: view.leadingAnchor, multiplier: 1),
             view.trailingAnchor.constraint(equalToSystemSpacingAfter: loginView.trailingAnchor, multiplier: 1),
-            
         ])
         
         
@@ -132,10 +129,19 @@ extension LoginViewController {
     }
     
     private func resetUI() {
-        signInButton.configuration?.showsActivityIndicator = false
+        signInButton.hideIndicator()
         loginView.usernameTextfield.text = ""
         loginView.passwordTextfield.text = ""
         errorMessage = ""
+    }
+}
+
+
+extension LoginViewController: LoginButtonDelegate {
+    
+    func signInTapped(sender: UIButton) {
+        configureView(withMessage: nil)
+        login()
     }
 }
 
@@ -143,11 +149,6 @@ extension LoginViewController {
 
 extension LoginViewController {
     
-    @objc
-    func signInTapped(sender: UIButton) {
-        configureView(withMessage: nil)
-        login()
-    }
     
     private func login() {
         guard let username = username, let password = password else {
@@ -155,13 +156,13 @@ extension LoginViewController {
             return
         }
         
-        guard !username.isEmpty, !password.isEmpty else {
-            errorMessage = "username / password cannot be blank"
-            return
-        }
-        
-        if username == "Atabany" && password == "123456" {
-            signInButton.configuration?.showsActivityIndicator = true
+        //        guard !username.isEmpty, !password.isEmpty else {
+        //            errorMessage = "username / password cannot be blank"
+        //            return
+        //        }
+        //
+        if username == "" && password == "" {
+            signInButton.showIndicator()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
                 guard let self = self else {return}
                 self.delegate?.didLogin()
@@ -178,3 +179,20 @@ extension LoginViewController {
         errorMessageLabel.isHidden =  message == nil
     }
 }
+
+
+//MARK: -  Observers
+
+extension LoginViewController {
+    func observe() {
+        subscriber =  NotificationCenter.default.publisher(for: UITextField.textDidChangeNotification)
+            .sink { [weak self] notification in
+                guard let self = self else {return}
+                guard let _ = notification.object as? UITextField else {
+                    return
+                }
+                self.errorMessage = nil
+            }
+    }
+}
+

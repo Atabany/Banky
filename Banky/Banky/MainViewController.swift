@@ -15,7 +15,6 @@ class MainViewController: UITabBarController {
         setupViews()
         setupTabBar()
     }
-
     
     private func setupViews() {
         
