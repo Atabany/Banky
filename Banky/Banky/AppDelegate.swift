@@ -32,7 +32,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func displayLogin() {
-        setRootViewController(loginViewController)
+//        setRootViewController(loginViewController)
+        prepMainView()
+        setRootViewController(mainViewController)
     }
     
     

@@ -156,12 +156,12 @@ extension LoginViewController {
             return
         }
         
-        //        guard !username.isEmpty, !password.isEmpty else {
-        //            errorMessage = "username / password cannot be blank"
-        //            return
-        //        }
-        //
-        if username == "" && password == "" {
+        guard !username.isEmpty, !password.isEmpty else {
+            errorMessage = "username / password cannot be blank"
+            return
+        }
+
+        if username == "Atabany" && password == "123456" {
             signInButton.showIndicator()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
                 guard let self = self else {return}
@@ -177,6 +177,7 @@ extension LoginViewController {
     private func configureView(withMessage message: String?) {
         errorMessageLabel.text = message
         errorMessageLabel.isHidden =  message == nil
+        if message != nil {signInButton.shake()}
     }
 }
 
@@ -195,4 +196,6 @@ extension LoginViewController {
             }
     }
 }
+
+
 
