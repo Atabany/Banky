@@ -11,8 +11,8 @@ class ShakeyBellView: UIView {
     
     
     let imageView = UIImageView()
-    
-    
+    let badgeButtonView = UIButton()
+    let buttonHeight: CGFloat = 16
     
     
     override init(frame: CGRect) {
@@ -43,17 +43,43 @@ extension ShakeyBellView {
         imageView.translatesAutoresizingMaskIntoConstraints = false
         let image = UIImage(systemName: "bell.fill")?.withTintColor(.white, renderingMode: .alwaysOriginal)
         imageView.image = image
-        addSubview(imageView)
+        
+        badgeButtonView.translatesAutoresizingMaskIntoConstraints = false
+        badgeButtonView.backgroundColor = .systemRed
+        badgeButtonView.titleLabel?.font = UIFont.systemFont(ofSize: 13)
+        badgeButtonView.setTitle("9", for: .normal)
+        badgeButtonView.setTitleColor(.white, for: .normal)
+        badgeButtonView.layer.cornerRadius = buttonHeight / 2
+        badgeButtonView.addTarget(self, action: #selector(imageDidTapped), for: .primaryActionTriggered)
+        
     }
     
     
     private func layout() {
+        addSubview(imageView)
+        addSubview(badgeButtonView)
+
+        
+        // ImageView
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
             imageView.widthAnchor.constraint(equalToConstant: 24),
-            NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: 1, constant: 0)
+            NSLayoutConstraint(item: imageView, attribute: .height, relatedBy: .equal, toItem: imageView, attribute: .width, multiplier: 1, constant: 0),
         ])
+        
+        
+        // Button
+        NSLayoutConstraint.activate([
+            badgeButtonView.widthAnchor.constraint(equalToConstant: buttonHeight),
+            badgeButtonView.heightAnchor.constraint(equalToConstant: buttonHeight),
+            badgeButtonView.topAnchor.constraint(equalTo: imageView.topAnchor),
+            badgeButtonView.leadingAnchor.constraint(equalTo: imageView.trailingAnchor, constant: -9)
+            
+        ])
+        
+        
+        
     }
     
     private func setup() {
@@ -77,8 +103,7 @@ extension ShakeyBellView {
     
     
     func animate() {
-        
-        shakeWith(duration: 4, angle: Double.pi / 8.0, yOffset: 1)
+        shakeWith(duration: 0.6, angle: Double.pi / 8.0, yOffset: 0)
     }
     
 }
