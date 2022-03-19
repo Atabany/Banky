@@ -11,6 +11,9 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AccountSummaryHeaderView" customModule="Banky" customModuleProvider="target">
             <connections>
                 <outlet property="contentView" destination="iN0-l3-epB" id="ehI-ff-bFJ"/>
+                <outlet property="dateLabel" destination="ol6-Ar-9GG" id="fbW-x2-ggr"/>
+                <outlet property="nameLabel" destination="aC9-8I-iwo" id="uGp-5Q-fzX"/>
+                <outlet property="welcomeLabel" destination="WsX-AN-8F6" id="sxa-fh-8Nf"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -70,7 +73,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="O68-iB-4Kk" secondAttribute="bottom" priority="999" constant="16" id="zq7-iM-DAJ"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="-175" y="232"/>
+            <point key="canvasLocation" x="-176.08695652173915" y="231.69642857142856"/>
         </view>
     </objects>
     <resources>

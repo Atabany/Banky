@@ -7,13 +7,8 @@
 
 import UIKit
 
+
 class AccountSummaryCell: UITableViewCell {
-    
-    enum AccountType: String {
-        case banking
-        case creditCard
-        case investment
-    }
     
     struct ViewModel {
         let accountType: AccountType
@@ -158,4 +153,6 @@ extension AccountSummaryCell {
     }
 }
 
+
+//MARK: - Netwokring
 
