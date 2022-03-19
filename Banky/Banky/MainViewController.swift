@@ -21,8 +21,6 @@ class MainViewController: UITabBarController {
         let summaryVC = AccountSummaryViewController()
         let moneyVC = MoveMoneyViewController()
         let moreVC = MoreViewController()
-
-
         
         summaryVC.setTabBarImage(imageName: "list.dash.header.rectangle", title: "Summary")
         moneyVC.setTabBarImage(imageName: "arrow.left.arrow.right", title: "Move Money")
@@ -33,24 +31,13 @@ class MainViewController: UITabBarController {
         let moneyNC = UINavigationController(rootViewController: moneyVC)
         let moreNC = UINavigationController(rootViewController: moreVC)
         
-        summaryNC.navigationBar.barTintColor = K.colors.appColor
-        hideNavigationBarLine(summaryNC.navigationBar)
-        
-
-        summaryNC.navigationBar.isTranslucent = false
-
         let tabBarList = [summaryNC, moneyNC, moreNC]
         viewControllers = tabBarList
     }
     
     
-    private func hideNavigationBarLine(_ navigationBar: UINavigationBar) {
-        let img = UIImage()
-        navigationBar.shadowImage = img
-        navigationBar.setBackgroundImage(img, for: .default)
-        navigationBar.isTranslucent = false
-    }
 
+    
     
     private func setupTabBar() {
         tabBar.tintColor = K.colors.appColor

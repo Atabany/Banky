@@ -40,7 +40,9 @@ class AccountSummaryViewController: UIViewController {
         super.viewDidLoad()
         setup()
         setupNavigationBar()
+        hideNavigationBarLine(navigationController!.navigationBar, color: K.colors.appColor)
     }
+    
 }
 
 extension AccountSummaryViewController {

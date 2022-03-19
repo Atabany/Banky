@@ -32,9 +32,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func displayLogin() {
+        //FIX: - REMOVE THE Mainview controller and uncomment `setRootViewController(loginViewController)`
 //        setRootViewController(loginViewController)
         prepMainView()
         setRootViewController(mainViewController)
+        
+        
     }
     
     
@@ -48,9 +51,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func prepMainView() {
-        mainViewController.setStatusBar()
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = K.colors.appColor
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().compactAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().compactScrollEdgeAppearance = appearance
         UINavigationBar.appearance().isTranslucent = false
-        UINavigationBar.appearance().backgroundColor = K.colors.appColor
     }
     
     private func registerForNotifications() {
