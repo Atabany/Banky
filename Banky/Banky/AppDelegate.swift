@@ -33,10 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     private func displayLogin() {
         //FIX: - REMOVE THE Mainview controller and uncomment `setRootViewController(loginViewController)`
-//        setRootViewController(loginViewController)
-        prepMainView()
-        setRootViewController(mainViewController)
-
+        setRootViewController(loginViewController)
+//        prepMainView()
+//        setRootViewController(mainViewController)
     }
     
     

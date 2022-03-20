@@ -174,7 +174,7 @@ extension AccountSummaryViewController {
             case .success(let accounts):
                 self.accounts = accounts
             case .failure(let error):
-                print(error.localizedDescription)
+                self.displayError(error)
             }
             self.group.leave()
         }
@@ -199,7 +199,7 @@ extension AccountSummaryViewController {
             case .success(let profile):
                 self.profile = profile
             case .failure(let error):
-                print(error.localizedDescription)
+                self.displayError(error)
             }
             self.group.leave()
         }
@@ -232,4 +232,29 @@ extension AccountSummaryViewController {
     }
 }
 
+
+
+
+//MARK: - Utils =>  Error Handling
+extension AccountSummaryViewController {
+    
+    private func displayError(_ error: NetworkError) {
+        self.showErrorAlert(title: error.title, message: error.message)
+        print(error.localizedDescription)
+    }
+    
+    
+    private func showErrorAlert(title: String, message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        
+        present(alert, animated: true, completion: nil)
+    }
+
+
+
+}
 
