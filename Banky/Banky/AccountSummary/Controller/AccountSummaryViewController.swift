@@ -16,39 +16,37 @@ class AccountSummaryViewController: UIViewController {
     // Request Models
     var profile: Profile?
     var accounts: [Account] = []
-
+    
     // View Models
     var profileViewModel: AccountSummaryHeaderView.ViewModel = AccountSummaryHeaderView.ViewModel(welcomeMessage: "Good Morning", name: "", date: Date())
     var accountCellViewModels = [AccountSummaryCell.ViewModel]()
     
     
+    // Dispatch group
+    let group = DispatchGroup()
+    
     
     // UI
     var headerView = AccountSummaryHeaderView(frame: .zero)
-
+    
     var tableView = UITableView()
-
+    
     lazy var logoutBarButtonItem: UIBarButtonItem = {
         let barButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
         barButtonItem.tintColor = .label
         return barButtonItem
     }()
-
+    
+    
+    
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        setupNavigationBar()
-        hideNavigationBarLine(navigationController!.navigationBar, color: K.colors.appColor)
     }
     
-}
-
-extension AccountSummaryViewController {
-    func setupNavigationBar() {
-        navigationItem.rightBarButtonItem = logoutBarButtonItem
-    }
 }
 
 
@@ -56,7 +54,9 @@ extension AccountSummaryViewController {
     private func setup() {
         setupTableView()
         setupTableHeaderView()
-        fetchDataAndLoadViews()
+        fetchData()
+        setupNavigationBar()
+        hideNavigationBarLine(navigationController!.navigationBar, color: K.colors.appColor)
     }
     
     private func setupTableView() {
@@ -88,6 +88,10 @@ extension AccountSummaryViewController {
         size.width = UIScreen.main.bounds.width
         headerView.frame.size = size
         tableView.tableHeaderView = headerView
+    }
+    
+    func setupNavigationBar() {
+        navigationItem.rightBarButtonItem = logoutBarButtonItem
     }
 }
 
@@ -124,9 +128,32 @@ extension AccountSummaryViewController {
 
 
 
+
+
 //MARK: - Networking
+
 extension AccountSummaryViewController {
+    
+    
+    private func fetchData() {
+        fetchProfile()
+        fetchAccounts()
+        
+        group.notify(queue: .main) {
+            self.tableView.reloadData()
+            if let profile = self.profile {
+                self.configureTableViewHeader(with: profile)
+            }
+        }
+    }
+    
+}
+
+
+extension AccountSummaryViewController {
+    
     private func fetchAccounts() {
+        group.enter()
         fetchAccounts(forUserId: "1") {[weak self] result in
             guard let self = self else {return}
             switch result {
@@ -136,45 +163,40 @@ extension AccountSummaryViewController {
             case .failure(let error):
                 print(error.localizedDescription)
             }
+            self.group.leave()
         }
     }
-
+    
     
     private func configureTableCells(with accounts: [Account]) {
         accountCellViewModels = accounts.map {
             AccountSummaryCell.ViewModel(accountType: $0.type, accountName: $0.name, balance: $0.amount)
         }
-        tableView.reloadData()
     }
     
-
+    
 }
 
 
 extension AccountSummaryViewController {
+    
     private func fetchProfile() {
+        group.enter()
         fetchProfile(forUserId: "1") { [weak self] result in
             guard let self = self else {return}
             switch result {
             case .success(let profile):
-                    self.profile = profile
-                    self.configureTableViewHeader(with: profile)
-                    self.tableView.reloadData()
+                self.profile = profile
             case .failure(let error):
                 print(error.localizedDescription)
             }
+            self.group.leave()
         }
-        
     }
     
     private func configureTableViewHeader(with profile: Profile) {
         profileViewModel = AccountSummaryHeaderView.ViewModel(welcomeMessage: "Good Morning", name: profile.firstName, date: Date())
         headerView.configure(viewModel: profileViewModel)
-    }
-    
-    private func fetchDataAndLoadViews() {
-        fetchProfile()
-        fetchAccounts()
     }
 }
 
