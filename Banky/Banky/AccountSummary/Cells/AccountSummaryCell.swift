@@ -38,7 +38,7 @@ class AccountSummaryCell: UITableViewCell {
     var chevronImageView = UIImageView()
     
     static let rowHeight: CGFloat = 112
-    static let reuseId = AccountSummaryCell.description()
+    static let reuseID = AccountSummaryCell.description()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {

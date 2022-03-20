@@ -125,7 +125,7 @@ extension ShakeyBellView {
                     self.imageView.transform = CGAffineTransform(rotationAngle: (i%2 == 0) ? -angle : +angle)
                 }
             }
-            UIView.addKeyframe(withRelativeStartTime: frameDuration*5,
+            UIView.addKeyframe(withRelativeStartTime: frameDuration*(numberOfFrames - 1),
                                relativeDuration: frameDuration) {
                 self.imageView.transform = CGAffineTransform.identity
             }

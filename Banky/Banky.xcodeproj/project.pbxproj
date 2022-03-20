@@ -18,6 +18,8 @@
 		2D43F94927DF9E05003D4C0C /* OnboardingContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43F94827DF9E05003D4C0C /* OnboardingContainerViewController.swift */; };
 		2D43F94F27DFB71B003D4C0C /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43F94E27DFB71B003D4C0C /* OnboardingViewController.swift */; };
 		2D43F95227DFBFCC003D4C0C /* K.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D43F95127DFBFCC003D4C0C /* K.swift */; };
+		2D447D4327E74F9A00571EEB /* SkeletonLoadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D447D4227E74F9A00571EEB /* SkeletonLoadable.swift */; };
+		2D447D4627E751DB00571EEB /* SkeletonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D447D4527E751DB00571EEB /* SkeletonCell.swift */; };
 		2D4911E627E4C3710093478E /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4911E527E4C3710093478E /* LoginButton.swift */; };
 		2D61FA5F27E0E484006355D6 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D61FA5E27E0E484006355D6 /* UIViewController + Ext.swift */; };
 		2D61FA6127E0E759006355D6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D61FA6027E0E759006355D6 /* MainViewController.swift */; };
@@ -62,6 +64,8 @@
 		2D43F94827DF9E05003D4C0C /* OnboardingContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingContainerViewController.swift; sourceTree = "<group>"; };
 		2D43F94E27DFB71B003D4C0C /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		2D43F95127DFBFCC003D4C0C /* K.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = K.swift; sourceTree = "<group>"; };
+		2D447D4227E74F9A00571EEB /* SkeletonLoadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonLoadable.swift; sourceTree = "<group>"; };
+		2D447D4527E751DB00571EEB /* SkeletonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkeletonCell.swift; sourceTree = "<group>"; };
 		2D4911E527E4C3710093478E /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		2D61FA5E27E0E484006355D6 /* UIViewController + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
 		2D61FA6027E0E759006355D6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +193,15 @@
 			path = Utlis;
 			sourceTree = "<group>";
 		};
+		2D447D4427E751C300571EEB /* Skeleton */ = {
+			isa = PBXGroup;
+			children = (
+				2D447D4227E74F9A00571EEB /* SkeletonLoadable.swift */,
+				2D447D4527E751DB00571EEB /* SkeletonCell.swift */,
+			);
+			path = Skeleton;
+			sourceTree = "<group>";
+		};
 		2D926EA927E25496006090EC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,6 +282,7 @@
 		2DF1738C27E111190012537C /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				2D447D4427E751C300571EEB /* Skeleton */,
 				2DF1738D27E1112B0012537C /* AccountSummaryCell.swift */,
 				2DE30B4D27E6351C00F01BD1 /* AccountSummaryCell + Netowkring.swift */,
 			);
@@ -379,8 +393,10 @@
 			files = (
 				2D4911E627E4C3710093478E /* LoginButton.swift in Sources */,
 				2D072B0E27E3936100121941 /* AppTitleView.swift in Sources */,
+				2D447D4327E74F9A00571EEB /* SkeletonLoadable.swift in Sources */,
 				2DAEC09227E0FE1000C19367 /* AccountSummaryHeaderView.swift in Sources */,
 				2D926EAF27E2A1FD006090EC /* CurrencyFormatter.swift in Sources */,
+				2D447D4627E751DB00571EEB /* SkeletonCell.swift in Sources */,
 				2DF1738E27E1112B0012537C /* AccountSummaryCell.swift in Sources */,
 				2D25BB6527DE8F3E00876FA3 /* LoginView.swift in Sources */,
 				2D3D11B427DE8B100024817C /* LoginViewController.swift in Sources */,

@@ -36,8 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        setRootViewController(loginViewController)
         prepMainView()
         setRootViewController(mainViewController)
-        
-        
+
     }
     
     
