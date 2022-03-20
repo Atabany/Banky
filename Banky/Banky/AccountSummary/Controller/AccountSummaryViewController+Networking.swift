@@ -9,39 +9,34 @@ import Foundation
 
 
 enum NetworkError: Error {
+    
     case serverError
     case decodingError
-    
-    
-    
-    var title: String   {
-        switch self {
-        case .serverError:
-            return "Server Error"
-        case .decodingError:
-            return "Decoding Error"
-        }
-    }
-    
-    
-    var message: String   {
-        switch self {
-        case .serverError:
-            return "Ensure you are connected to the internet. Please try again"
-        case .decodingError:
-            return "We could not process your request. Please try again."
-        }
-    }
-    
-    
-    
-    
+
+//    var title: String   {
+//        switch self {
+//        case .serverError:
+//            return "Server Error"
+//        case .decodingError:
+//            return "Decoding Error"
+//        }
+//    }
+//    
+//
+//    var message: String   {
+//        switch self {
+//        case .serverError:
+//            return "Ensure you are connected to the internet. Please try again"
+//        case .decodingError:
+//            return "We could not process your request. Please try again."
+//        }
+//    }
+//    
     
 }
 
 
 struct Profile: Codable {
-    
     let id: String
     let firstName: String
     let lastName: String
@@ -52,12 +47,9 @@ struct Profile: Codable {
         case firstName = "first_name"
         case lastName  = "last_name"
     }
-    
 }
 
-
 extension AccountSummaryViewController {
-    
     func fetchProfile(forUserId userId: String, completion: @escaping (Result<Profile, NetworkError>) -> Void) {
         let url = URL(string: "https://fierce-retreat-36855.herokuapp.com/bankey/profile/\(userId)")!
         URLSession.shared.dataTask(with: url) { data, response, error in

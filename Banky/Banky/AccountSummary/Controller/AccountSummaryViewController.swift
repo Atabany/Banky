@@ -239,8 +239,17 @@ extension AccountSummaryViewController {
 extension AccountSummaryViewController {
     
     private func displayError(_ error: NetworkError) {
-        self.showErrorAlert(title: error.title, message: error.message)
-        print(error.localizedDescription)
+        let title: String
+        let message: String
+        switch error {
+        case .serverError:
+            title = "Server Error"
+            message = "Enure your are connected to the internet. Please try again."
+        case .decodingError:
+            title = "Server Error"
+            message = "We could not process your request. Please try again."
+        }
+        self.showErrorAlert(title: title, message: message)
     }
     
     
