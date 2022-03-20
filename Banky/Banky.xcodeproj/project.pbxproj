@@ -23,6 +23,10 @@
 		2D4911E627E4C3710093478E /* LoginButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D4911E527E4C3710093478E /* LoginButton.swift */; };
 		2D61FA5F27E0E484006355D6 /* UIViewController + Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D61FA5E27E0E484006355D6 /* UIViewController + Ext.swift */; };
 		2D61FA6127E0E759006355D6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D61FA6027E0E759006355D6 /* MainViewController.swift */; };
+		2D647BA027E79844002F066F /* ProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D647B9F27E79844002F066F /* ProfileManager.swift */; };
+		2D647BA327E79954002F066F /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D647BA227E79954002F066F /* ProfileModel.swift */; };
+		2D647BA527E799A8002F066F /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D647BA427E799A8002F066F /* Account.swift */; };
+		2D647BA727E7BBA5002F066F /* AccountSummaryViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D647BA627E7BBA5002F066F /* AccountSummaryViewControllerTests.swift */; };
 		2D69037A27E3A53C00F8F7E8 /* NSNotificationName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69037927E3A53C00F8F7E8 /* NSNotificationName.swift */; };
 		2D69037C27E3ABD700F8F7E8 /* UItextfield+SecureToggle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D69037B27E3ABD700F8F7E8 /* UItextfield+SecureToggle.swift */; };
 		2D926EAB27E254A0006090EC /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D926EAA27E254A0006090EC /* String+Ext.swift */; };
@@ -69,6 +73,10 @@
 		2D4911E527E4C3710093478E /* LoginButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginButton.swift; sourceTree = "<group>"; };
 		2D61FA5E27E0E484006355D6 /* UIViewController + Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Ext.swift"; sourceTree = "<group>"; };
 		2D61FA6027E0E759006355D6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		2D647B9F27E79844002F066F /* ProfileManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileManager.swift; sourceTree = "<group>"; };
+		2D647BA227E79954002F066F /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		2D647BA427E799A8002F066F /* Account.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		2D647BA627E7BBA5002F066F /* AccountSummaryViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountSummaryViewControllerTests.swift; sourceTree = "<group>"; };
 		2D69037927E3A53C00F8F7E8 /* NSNotificationName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSNotificationName.swift; sourceTree = "<group>"; };
 		2D69037B27E3ABD700F8F7E8 /* UItextfield+SecureToggle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UItextfield+SecureToggle.swift"; sourceTree = "<group>"; };
 		2D926EAA27E254A0006090EC /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -202,6 +210,23 @@
 			path = Skeleton;
 			sourceTree = "<group>";
 		};
+		2D647B9E27E7982B002F066F /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				2D647B9F27E79844002F066F /* ProfileManager.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		2D647BA127E79949002F066F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				2D647BA227E79954002F066F /* ProfileModel.swift */,
+				2D647BA427E799A8002F066F /* Account.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		2D926EA927E25496006090EC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -233,6 +258,8 @@
 				2DF1738C27E111190012537C /* Cells */,
 				2D13399327E56BF000F5C0B0 /* Components */,
 				2DF1738B27E111080012537C /* Header */,
+				2D647BA127E79949002F066F /* Model */,
+				2D647B9E27E7982B002F066F /* Networking */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -266,6 +293,7 @@
 			children = (
 				2DE30B5127E6647A00F01BD1 /* ProfileTests.swift */,
 				2DE30B5527E66EA200F01BD1 /* AccountTests.swift */,
+				2D647BA627E7BBA5002F066F /* AccountSummaryViewControllerTests.swift */,
 			);
 			path = AccountSummary;
 			sourceTree = "<group>";
@@ -400,9 +428,11 @@
 				2DF1738E27E1112B0012537C /* AccountSummaryCell.swift in Sources */,
 				2D25BB6527DE8F3E00876FA3 /* LoginView.swift in Sources */,
 				2D3D11B427DE8B100024817C /* LoginViewController.swift in Sources */,
+				2D647BA327E79954002F066F /* ProfileModel.swift in Sources */,
 				2D61FA5F27E0E484006355D6 /* UIViewController + Ext.swift in Sources */,
 				2DE30B4E27E6351C00F01BD1 /* AccountSummaryCell + Netowkring.swift in Sources */,
 				2D43F94F27DFB71B003D4C0C /* OnboardingViewController.swift in Sources */,
+				2D647BA527E799A8002F066F /* Account.swift in Sources */,
 				2D3D11B027DE8B100024817C /* AppDelegate.swift in Sources */,
 				2D926EAB27E254A0006090EC /* String+Ext.swift in Sources */,
 				2D69037C27E3ABD700F8F7E8 /* UItextfield+SecureToggle.swift in Sources */,
@@ -414,6 +444,7 @@
 				2DD355A427E6250E00800A8F /* AccountSummaryViewController+Networking.swift in Sources */,
 				2DDAAC7B27E02033006639E6 /* LocalState.swift in Sources */,
 				2D61FA6127E0E759006355D6 /* MainViewController.swift in Sources */,
+				2D647BA027E79844002F066F /* ProfileManager.swift in Sources */,
 				2D13399727E56C2500F5C0B0 /* ShakeyBellView.swift in Sources */,
 				2D926EAD27E29DD4006090EC /* Decimal+Ext.swift in Sources */,
 			);
@@ -426,6 +457,7 @@
 				2D072B0B27E373E800121941 /* CurrencyFormatterTests.swift in Sources */,
 				2DE30B5627E66EA200F01BD1 /* AccountTests.swift in Sources */,
 				2DE30B5227E6647A00F01BD1 /* ProfileTests.swift in Sources */,
+				2D647BA727E7BBA5002F066F /* AccountSummaryViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
