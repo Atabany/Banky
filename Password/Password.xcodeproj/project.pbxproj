@@ -14,6 +14,7 @@
 		2D3DDAF927E8C4AB006C6B59 /* PasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3DDAF827E8C4AB006C6B59 /* PasswordTests.swift */; };
 		2D3DDB0327E8C4AB006C6B59 /* PasswordUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3DDB0227E8C4AB006C6B59 /* PasswordUITests.swift */; };
 		2D3DDB0527E8C4AB006C6B59 /* PasswordUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3DDB0427E8C4AB006C6B59 /* PasswordUITestsLaunchTests.swift */; };
+		2DEC916027E8DF6A0056A765 /* PasswordTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEC915F27E8DF6A0056A765 /* PasswordTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		2D3DDAFE27E8C4AB006C6B59 /* PasswordUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PasswordUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D3DDB0227E8C4AB006C6B59 /* PasswordUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordUITests.swift; sourceTree = "<group>"; };
 		2D3DDB0427E8C4AB006C6B59 /* PasswordUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2DEC915F27E8DF6A0056A765 /* PasswordTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 		2D3DDAE027E8C4AB006C6B59 /* Password */ = {
 			isa = PBXGroup;
 			children = (
+				2DEC915C27E8C66D0056A765 /* UI Components */,
 				2DDCA0E627E8C56B00CAB8E8 /* Files */,
 				2D3DDAE127E8C4AB006C6B59 /* AppDelegate.swift */,
 				2D3DDAE527E8C4AB006C6B59 /* ViewController.swift */,
@@ -127,6 +130,14 @@
 				2D3DDAEF27E8C4AB006C6B59 /* Info.plist */,
 			);
 			name = Files;
+			sourceTree = "<group>";
+		};
+		2DEC915C27E8C66D0056A765 /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				2DEC915F27E8DF6A0056A765 /* PasswordTextField.swift */,
+			);
+			path = "UI Components";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,6 +271,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D3DDAE627E8C4AB006C6B59 /* ViewController.swift in Sources */,
+				2DEC916027E8DF6A0056A765 /* PasswordTextField.swift in Sources */,
 				2D3DDAE227E8C4AB006C6B59 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
