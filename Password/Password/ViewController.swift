@@ -11,7 +11,8 @@ class ViewController: UIViewController {
     
     let newPasswordTextField = PasswordTextfield(placeHolderText: "New Pass")
     let stackView = UIStackView()
-
+    let criteriaView = PasswordCriteriaView(text: "uppercase letter (A-Z)")
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         style()
@@ -28,12 +29,14 @@ extension ViewController {
         stackView.spacing = 30
         
         newPasswordTextField.translatesAutoresizingMaskIntoConstraints = false
+        criteriaView.translatesAutoresizingMaskIntoConstraints = false
 
     }
     
     private func layout() {
         
-        stackView.addArrangedSubview(newPasswordTextField)
+//        stackView.addArrangedSubview(newPasswordTextField)
+        stackView.addArrangedSubview(criteriaView)
         view.addSubview(stackView)
         
         NSLayoutConstraint.activate([
