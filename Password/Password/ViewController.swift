@@ -32,6 +32,7 @@ extension ViewController {
         stackView.spacing = 30
         
         newPasswordTextField.translatesAutoresizingMaskIntoConstraints = false
+        newPasswordTextField.delegate = self
         
         statusView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -62,6 +63,32 @@ extension ViewController {
         ])
         
     }
+}
+
+
+// Udate StatusView
+extension ViewController {
+    //            PasswordCriteria.isValidLengthAndNoWhiteSpaces(text: passwordTextField.textField.text!) ?
+    //            (statusView.lengthCriteriaView.isCriteriaMet = true) :
+    //            (statusView.lengthCriteriaView.reset())
+
+    
+    
+//    func displayView
+}
+
+
+//MARK: -  PasswordTextfieldDelegate
+
+extension ViewController: PasswordTextfieldDelegate {
+
+    func editingChanged(_ sender: PasswordTextfield) {
+        if sender == newPasswordTextField {
+            statusView.updateDiplay(sender.textField.text!)
+        }
+    }
+    
+    
 }
 
 

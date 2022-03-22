@@ -7,6 +7,12 @@
 
 
 import UIKit
+
+protocol PasswordTextfieldDelegate: AnyObject {
+    func editingChanged(_ sender: PasswordTextfield)
+}
+
+
 class PasswordTextfield: UIView {
     
     let lockImageView = UIImageView(image: UIImage(systemName: "lock.fill")!)
@@ -16,6 +22,7 @@ class PasswordTextfield: UIView {
     let divderView = UIView()
     let errorLabel = UILabel()
     
+    weak var delegate: PasswordTextfieldDelegate?
     
     
 
@@ -54,10 +61,15 @@ extension PasswordTextfield {
         textField.translatesAutoresizingMaskIntoConstraints = false
         textField.isSecureTextEntry = false // true
         textField.placeholder = placeHolderText
-//        textField.delegate = self
+        textField.delegate = self
         textField.keyboardType = .asciiCapable
         textField.attributedPlaceholder = NSAttributedString(string: placeHolderText,
                                                              attributes: [.foregroundColor: UIColor.secondaryLabel])
+        
+        textField.addTarget(self, action: #selector(textFieldEditingChanged), for: .editingChanged)
+        
+        
+        
 
         eyeButton.translatesAutoresizingMaskIntoConstraints = false
         eyeButton.setImage(UIImage(systemName: "eye.circle"), for: .normal)
@@ -75,7 +87,7 @@ extension PasswordTextfield {
         errorLabel.text = "your password must meet the requirements below."
         errorLabel.numberOfLines = 0
         errorLabel.lineBreakMode = .byWordWrapping
-        errorLabel.isHidden = false
+        errorLabel.isHidden = true
 
         
     }
@@ -148,20 +160,26 @@ extension PasswordTextfield {
 }
 
 //MARK: - Actions
-
-
 extension PasswordTextfield {
+    
     @objc
     func togglePasswordView() {
         textField.isSecureTextEntry.toggle()
         eyeButton.isSelected.toggle()
-
     }
     
+    
+    @objc
+    func textFieldEditingChanged(_ sender: UITextField) {
+        delegate?.editingChanged(self)
+    }
     
 }
 
 
 //MARK: - UITextfield delegate
 
+extension PasswordTextfield: UITextFieldDelegate {
 
+
+}

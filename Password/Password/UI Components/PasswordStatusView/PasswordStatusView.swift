@@ -15,10 +15,12 @@ class PasswordStatusView: UIView {
     let lowerCaseCriteriaView = PasswordCriteriaView(text: "lowercase (a-z)")
     let digitCriteriaView = PasswordCriteriaView(text: "digit (0-9)")
     let specialCharacterCriteriaView = PasswordCriteriaView(text: "special character (e.g. !@#$%^)")
-    
     let criteriaLabel = UILabel()
-
-
+    
+    // Used to determine if we reset criteria back to empty state
+    private var shouldResetCriteria: Bool = true
+    
+    
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,14 +48,14 @@ class PasswordStatusView: UIView {
         var boldTextAttributes = [NSAttributedString.Key: AnyObject]()
         boldTextAttributes[.foregroundColor] = UIColor.label
         boldTextAttributes[.font] = UIFont.preferredFont(forTextStyle: .subheadline)
-
+        
         let attrText = NSMutableAttributedString(string: "Use at least ", attributes: plainTextAttributes)
         attrText.append(NSAttributedString(string: "3 of these 4 ", attributes: boldTextAttributes))
         attrText.append(NSAttributedString(string: "criteria when setting your password:", attributes: plainTextAttributes))
-
+        
         return attrText
     }
-
+    
     
 }
 
@@ -62,11 +64,11 @@ extension PasswordStatusView {
     
     func style() {
         translatesAutoresizingMaskIntoConstraints = false
-
+        
         backgroundColor = .tertiarySystemFill
         layer.cornerRadius = 5
         clipsToBounds = true
-    
+        
         
         stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.axis = .vertical
@@ -94,7 +96,7 @@ extension PasswordStatusView {
         stackView.addArrangedSubview(lowerCaseCriteriaView)
         stackView.addArrangedSubview(digitCriteriaView)
         stackView.addArrangedSubview(specialCharacterCriteriaView)
-
+        
         
         NSLayoutConstraint.activate([
             stackView.leadingAnchor.constraint(equalToSystemSpacingAfter: leadingAnchor, multiplier: 2),
@@ -105,5 +107,48 @@ extension PasswordStatusView {
         
     }
     
+}
+
+//MARK: - Actions
+extension PasswordStatusView {
+    
+    
+    func updateDiplay(_ text: String) {
+        let lengthAndNoSpacesMet = PasswordCriteria.lengthAndNoSpacesMet(text)
+        let upperCaseMet =  PasswordCriteria.upperCaseMet(text)
+        let lowerCaseMet =  PasswordCriteria.lowerCaseMet(text)
+        let digitMet =  PasswordCriteria.digitCaseMet(text)
+        let speicalCharacterMet =  PasswordCriteria.specialCharacterMet(text)
+
+        
+        
+        
+        if shouldResetCriteria {
+            lengthAndNoSpacesMet
+                ? lengthCriteriaView.isCriteriaMet = true
+                : lengthCriteriaView.reset()
+            
+            upperCaseMet
+                ? uppercaseCriteriaView.isCriteriaMet = true
+                : uppercaseCriteriaView.reset()
+            
+            
+            lowerCaseMet
+                ? lowerCaseCriteriaView.isCriteriaMet = true
+                : lowerCaseCriteriaView.reset()
+
+            
+            digitMet
+                ? digitCriteriaView.isCriteriaMet = true
+                : digitCriteriaView.reset()
+            
+            speicalCharacterMet
+                ? specialCharacterCriteriaView.isCriteriaMet = true
+                : specialCharacterCriteriaView.reset()
+
+            
+        }
+        
+    }
 }
 
