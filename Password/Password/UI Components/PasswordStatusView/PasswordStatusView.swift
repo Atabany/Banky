@@ -18,8 +18,15 @@ class PasswordStatusView: UIView {
     let criteriaLabel = UILabel()
     
     // Used to determine if we reset criteria back to empty state
-    private var shouldResetCriteria: Bool = true
+    var shouldResetCriteria: Bool = true
     
+    var criteriaMet: Bool {
+        return lengthCriteriaView.isCriteriaMet &&
+        uppercaseCriteriaView.isCriteriaMet &&
+        lowerCaseCriteriaView.isCriteriaMet &&
+        digitCriteriaView.isCriteriaMet &&
+        specialCharacterCriteriaView.isCriteriaMet
+    }
     
     
     override init(frame: CGRect) {
@@ -119,36 +126,69 @@ extension PasswordStatusView {
         let lowerCaseMet =  PasswordCriteria.lowerCaseMet(text)
         let digitMet =  PasswordCriteria.digitCaseMet(text)
         let speicalCharacterMet =  PasswordCriteria.specialCharacterMet(text)
-
+        
         
         
         
         if shouldResetCriteria {
             lengthAndNoSpacesMet
-                ? lengthCriteriaView.isCriteriaMet = true
-                : lengthCriteriaView.reset()
+            ? lengthCriteriaView.isCriteriaMet = true
+            : lengthCriteriaView.reset()
             
             upperCaseMet
-                ? uppercaseCriteriaView.isCriteriaMet = true
-                : uppercaseCriteriaView.reset()
+            ? uppercaseCriteriaView.isCriteriaMet = true
+            : uppercaseCriteriaView.reset()
             
             
             lowerCaseMet
-                ? lowerCaseCriteriaView.isCriteriaMet = true
-                : lowerCaseCriteriaView.reset()
-
+            ? lowerCaseCriteriaView.isCriteriaMet = true
+            : lowerCaseCriteriaView.reset()
+            
             
             digitMet
-                ? digitCriteriaView.isCriteriaMet = true
-                : digitCriteriaView.reset()
+            ? digitCriteriaView.isCriteriaMet = true
+            : digitCriteriaView.reset()
             
             speicalCharacterMet
-                ? specialCharacterCriteriaView.isCriteriaMet = true
-                : specialCharacterCriteriaView.reset()
-
+            ? specialCharacterCriteriaView.isCriteriaMet = true
+            : specialCharacterCriteriaView.reset()
             
+        } else {
+            lengthCriteriaView.isCriteriaMet = lengthAndNoSpacesMet
+            uppercaseCriteriaView.isCriteriaMet = upperCaseMet
+            lowerCaseCriteriaView.isCriteriaMet = lowerCaseMet
+            digitCriteriaView.isCriteriaMet = digitMet
+            specialCharacterCriteriaView.isCriteriaMet = speicalCharacterMet
         }
         
     }
-}
+    
+    
+    
+    func validate(_ text: String) -> Bool {
+        
+        let upperCaseMet =  PasswordCriteria.upperCaseMet(text)
+        let lowerCaseMet =  PasswordCriteria.lowerCaseMet(text)
+        let digitMet =  PasswordCriteria.digitCaseMet(text)
+        let speicalCharacterMet =  PasswordCriteria.specialCharacterMet(text)
+        
+        let checkable = [upperCaseMet, lowerCaseMet, digitMet, speicalCharacterMet]
+        
+        let metCriteria = (checkable.filter {$0}).count >= 3
+        let lengthAndNoSpacesMet = PasswordCriteria.lengthAndNoSpacesMet(text)
 
+        return metCriteria && lengthAndNoSpacesMet
+    }
+    
+    
+    
+    func reset() {
+        
+        lengthCriteriaView.reset()
+        uppercaseCriteriaView.reset()
+        lowerCaseCriteriaView.reset()
+        digitCriteriaView.reset()
+        specialCharacterCriteriaView.reset()
+    }
+    
+}

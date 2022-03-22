@@ -10,22 +10,41 @@ import UIKit
 
 protocol PasswordTextfieldDelegate: AnyObject {
     func editingChanged(_ sender: PasswordTextfield)
+    func editingDidEnd(_ sender: PasswordTextfield)
 }
 
 
 class PasswordTextfield: UIView {
     
+    
+    
+    
+    
+    
+    /**
+            A function one passes in to do custom validation on the text field
+                    - Parameter: textValue: The value of text to validate
+                    - Returns: A Bool indicating whether text is valid, and if not a string containing an error message
+     */
+    typealias CustomValidation = (_ textValue: String?) -> (Bool, String)?
+    
     let lockImageView = UIImageView(image: UIImage(systemName: "lock.fill")!)
     let textField = UITextField()
-    var placeHolderText: String
     let eyeButton = UIButton(type: .custom)
     let divderView = UIView()
     let errorLabel = UILabel()
     
+    
     weak var delegate: PasswordTextfieldDelegate?
+    var placeHolderText: String
+    var customValidatoin: CustomValidation?
+    
+    var text: String? {
+        get { return textField.text }
+        set { textField.text = newValue  }
+    }
     
     
-
     init(placeHolderText: String) {
         
         self.placeHolderText = placeHolderText
@@ -171,6 +190,7 @@ extension PasswordTextfield {
     
     @objc
     func textFieldEditingChanged(_ sender: UITextField) {
+        errorLabel.isHidden = true
         delegate?.editingChanged(self)
     }
     
@@ -178,8 +198,48 @@ extension PasswordTextfield {
 
 
 //MARK: - UITextfield delegate
-
 extension PasswordTextfield: UITextFieldDelegate {
 
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        delegate?.editingDidEnd(self)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
+    }
 
 }
+
+
+//MARK: - Validation
+extension PasswordTextfield {
+    
+//    typealias CustomValidation = (_ textValue: String?) -> (Bool, String)?
+    
+    func validate() -> Bool {
+        if let customValidation = customValidatoin,
+            let customValidationResult = customValidation(text),
+           customValidationResult.0 == false {
+            showError(customValidationResult.1)
+            return false
+        }
+        clearError()
+        return true
+    }
+    
+    
+    private func showError(_ errorMessage: String) {
+        errorLabel.text = errorMessage
+        errorLabel.isHidden = false
+    }
+    
+    
+    private func clearError() {
+        errorLabel.isHidden = true
+        errorLabel.text = ""
+    }
+    
+}
+
+
