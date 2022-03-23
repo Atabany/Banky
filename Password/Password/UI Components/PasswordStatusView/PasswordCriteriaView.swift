@@ -14,9 +14,9 @@ class PasswordCriteriaView: UIView {
     let label = UILabel()
     
     
-    let checkmarkImage = UIImage(systemName: "checkmark.circle")?.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
-    let xmarkImage = UIImage(systemName: "xmark.circle")?.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
-    let circleImage = UIImage(systemName: "circle")?.withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
+    let checkmarkImage = UIImage(systemName: "checkmark.circle")!.withTintColor(.systemGreen, renderingMode: .alwaysOriginal)
+    let xmarkImage = UIImage(systemName: "xmark.circle")!.withTintColor(.systemRed, renderingMode: .alwaysOriginal)
+    let circleImage = UIImage(systemName: "circle")!.withTintColor(.tertiaryLabel, renderingMode: .alwaysOriginal)
     
     var isCriteriaMet: Bool = false {
         didSet {
@@ -113,3 +113,17 @@ extension PasswordCriteriaView {
     
 }
 
+// MARK: Tests
+extension PasswordCriteriaView {
+    var isCheckMarkImage: Bool {
+        return imageView.image == checkmarkImage
+    }
+
+    var isXmarkImage: Bool {
+        return imageView.image == xmarkImage
+    }
+
+    var isResetImage: Bool {
+        return imageView.image == circleImage
+    }
+}

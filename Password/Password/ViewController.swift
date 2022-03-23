@@ -18,6 +18,9 @@ class ViewController: UIViewController {
     let confirmPasswordTextField = PasswordTextfield(placeHolderText: "Re-enter new password")
     let resetButton = UIButton(type: .system)
     
+    // Testing
+    var alert:  UIAlertController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -176,23 +179,24 @@ extension ViewController {
     @objc
     func resetPasswordButtonTapped() {
         view.endEditing(true)
-        let isValidNewPassword =  newPasswordTextField.validate()
-        let isValidConfirmPassword =  confirmPasswordTextField.validate()
-        
-        if isValidNewPassword && isValidConfirmPassword {
+        if validateForm() {
             showAlert(title: "Success", message: "You have successfully changed your password.")
         }
-        
+    }
+
+    
+    func validateForm()  -> Bool {
+        let isValidNewPassword =  newPasswordTextField.validate()
+        let isValidConfirmPassword =  confirmPasswordTextField.validate()
+        return isValidNewPassword && isValidConfirmPassword
     }
     
-    
     private func showAlert(title: String, message: String) {
-        let alert =  UIAlertController(title: "", message: "", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-
-        alert.title = title
-        alert.message = message
-        present(alert, animated: true, completion: nil)
+        
+        alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert?.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        guard let alert = alert else {return}
+        present(alert , animated: true, completion: nil)
     }
 
 }
@@ -224,5 +228,22 @@ extension ViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         view.frame.origin.y = 0
     }
+    
+}
+
+//MARK: -  Tests
+extension ViewController {
+    
+    var newPassword: String? {
+        get { return newPasswordTextField.textField.text }
+        set { newPasswordTextField.textField.text = newValue}
+    }
+    
+    
+    var  confirmPassword: String? {
+        get { return confirmPasswordTextField.textField.text }
+        set { confirmPasswordTextField.textField.text = newValue}
+    }
+
     
 }

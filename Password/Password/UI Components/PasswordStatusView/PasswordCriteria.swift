@@ -45,6 +45,4 @@ struct PasswordCriteria {
     }
 
     
-
-    
 }
